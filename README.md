@@ -1,6 +1,6 @@
 # Portfolio - Michelle LeBlanc
 
-Welcome to my portfolio site showcasing my work and projects in frontend web development. This site is built using React, Next.js, and SCSS for styling. You can view the live site at [MichelleLeBlanc.net](https://michelleleblanc.net/).
+Welcome to my portfolio site showcasing my work and projects in frontend web development. This site is built using React, Next.js, and SCSS for styling. You can view the live site at [MichelleLeBlanc.net](http://michelleleblanc.net/).
 
 ## Table of Contents
 

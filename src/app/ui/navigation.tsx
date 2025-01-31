@@ -1,4 +1,4 @@
-import { getCurrentYear } from 'app/lib/util';
+import { getCurrentYear } from 'app/utils/datetime';
 import styles from './navigation.module.scss';
 
 export function GlobalFooter() {

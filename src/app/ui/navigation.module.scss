@@ -1,0 +1,23 @@
+@import '../variables';
+
+.footer {
+  background-color: lighten($black, 25%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+}
+
+.header {
+  margin: 10px 10px 0 10px;
+  background: -webkit-linear-gradient($orange, $red, $red, $purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 1;
+  opacity: 1;
+  transition: all 0.3s;
+}

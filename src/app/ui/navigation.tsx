@@ -1,4 +1,5 @@
 import { getCurrentYear } from 'app/utils/datetime';
+import Link from 'next/link'
 import styles from './navigation.module.scss';
 
 export function GlobalFooter() {
@@ -14,7 +15,9 @@ export function GlobalFooter() {
 export function GlobalHeader() {
   return (
     <header className={styles.header}>
-      ML
+      <div className={styles.logo}>
+        <Link href={'/'}>ML</Link>
+      </div>
     </header>
   );
 }

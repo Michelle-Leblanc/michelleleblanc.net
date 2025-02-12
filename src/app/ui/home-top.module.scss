@@ -7,6 +7,7 @@
     justify-content: center;
     height: 100vh;
     background: radial-gradient(circle at 79% 17%, rgba($purple, 0.6), rgba($background, 1));
+    overflow: hidden;
   }
 }
 
@@ -30,52 +31,7 @@ p.intro {
 
 .button-container {
   display: flex;
-  // grid: auto / auto auto auto auto;
   gap: 10px;
-}
-
-@keyframes lineUp {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: -100%;
-  }
-}
-@keyframes lineDown {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-$line: (
-  border-top: 1px solid $purple,
-  border-bottom: 1px solid $purple,
-  position: absolute,
-  top: 50%,
-  left: 50%,
-  transform: translate(-50%, -50%) rotate(-45deg),
-  width: 200vw,
-  height: 100vh,
-  background-color: $background,
-);
-.line {
-  &-1 {
-    @each $property, $value in $line {
-      #{$property}: $value;
-    }
-    animation: 2.5s lineUp;
-    left: -100%;
-  }
-  &-2 {
-    @each $property, $value in $line {
-      #{$property}: $value;
-    }
-    animation: 2.5s lineDown;
-    left: 200%;
-  }
 }
 
 button.nav {
@@ -93,5 +49,46 @@ button.nav {
     background-color: darken($purple, 35%);
     color: $orange;
     border-color: $orange;
+  }
+}
+
+@keyframes lineUp {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: -50%;
+  }
+}
+@keyframes lineDown {
+  0% {
+    bottom: 0%
+  }
+  100% {
+    bottom: -49.9%
+  }
+}
+$line: (
+  border-top: 1px solid $purple,
+  border-bottom: 1px solid $purple,
+  position: absolute,
+  width: 100vw,
+  height: 50%,
+  background-color: $background,
+);
+.line {
+  &-top {
+    @each $property, $value in $line {
+      #{$property}: $value;
+    }
+    animation: 2s lineUp;
+    top: -50%;
+  }
+  &-bottom {
+    @each $property, $value in $line {
+      #{$property}: $value;
+    }
+    animation: 2s lineDown;
+    bottom: -49.9%
   }
 }

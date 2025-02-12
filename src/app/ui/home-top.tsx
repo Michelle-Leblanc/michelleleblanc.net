@@ -2,35 +2,32 @@
 import styles from './home-top.module.scss';
 
 interface props {
-  onAboutClick: () => void;
-  onProjectsClick: () => void;
-  onSkillsClick: () => void;
-  onConnectClick: () => void;
+  onSectionClick: (sectionId: "about" | "projects" | "skills" | "connect") => void;
 }
 
-export function HomeTop({ onAboutClick, onProjectsClick, onSkillsClick, onConnectClick }: props) {
+export function HomeTop({ onSectionClick }: props) {
   const buttonData = [
     {
       label: 'About',
-      onClick: onAboutClick,
+      id: 'about',
     },
     {
       label: 'Projects',
-      onClick: onProjectsClick,
+      id: 'projects',
     },
     {
       label: 'Skills',
-      onClick: onSkillsClick,
+      id: 'skills',
     },
     {
       label: 'Let\'s Connect',
-      onClick: onConnectClick,
+      id: 'connect',
     },
-  ];
+  ] as const;
 
   return (
     <>
-      <div className={styles['line-1']} />
+      <div className={styles['line-top']} />
       <div className={styles['page-top']}>
         <div className={styles['page-width']}>
           <h1 className={styles['name']}>
@@ -42,14 +39,14 @@ export function HomeTop({ onAboutClick, onProjectsClick, onSkillsClick, onConnec
           </h2>
           <div className={styles['button-container']}>
             {buttonData.map((buttonData, index) => (
-              <button key={index} className={styles.nav} onClick={buttonData.onClick}>
+              <button key={index} className={styles.nav} onClick={() => onSectionClick(buttonData.id)}>
                 {buttonData.label}
               </button>
             ))}
           </div>
         </div>
       </div>
-      <div className={styles['line-2']} />
+      <div className={styles['line-bottom']} />
     </>
   );
 }

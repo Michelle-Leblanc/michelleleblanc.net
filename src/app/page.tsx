@@ -1,5 +1,9 @@
 'use client';
 import { useRef } from 'react';
+import Image from 'next/image';
+import gitHub from './public/github-mark-white.png';
+import linkedIn from './public/linkedin-white.png';
+
 import styles from "./page.module.scss";
 import { GlobalFooter, GlobalHeader } from './ui/navigation';
 import { HomeTop } from './ui/home-top';
@@ -15,8 +19,7 @@ export default function Home() {
 
   const handleScrollToSection = (sectionId: keyof typeof sectionRefs) => {
     sectionRefs[sectionId]?.current?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
+      behavior: 'smooth'
     });
   };
 
@@ -47,7 +50,44 @@ export default function Home() {
           </section>
           <section ref={sectionRefs.connect}>
             <Section title={'Let\'s Connect'}>
-              <p>Coming Soon</p>
+              <div className={styles['connect']}>
+                <div>
+                  <a
+                  href="https://github.com/Michelle-Leblanc"
+                  title="Michelle's Github Profile"
+                  target="_blank">
+                    <Image
+                      src={gitHub}
+                      width={50}
+                      height={50}
+                      alt="Michelle's Github Profile"
+                    />
+                  </a>
+                </div>
+                
+                <div>
+                  <a
+                    href="https://www.linkedin.com/in/hellomichelleleblanc/"
+                    title="Michelle's LinkedIn Profile"
+                    target="_blank">
+                    <Image
+                      src={linkedIn}
+                      width={50}
+                      height={50}
+                      alt="Michelle's LinkedIn Profile"
+                    />
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href="mailto:hello@michelleleblanc.net"
+                    title="Email Michelle"
+                    target="_blank">
+                    <span className={styles['at']}>@</span>
+                  </a>
+                </div>
+              </div>
             </Section>
           </section>
         </div>

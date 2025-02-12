@@ -1,24 +1,30 @@
 'use client';
 import styles from './home-top.module.scss';
-import { ButtonNav } from './button-nav';
 
-export function HomeTop() {
+interface props {
+  onAboutClick: () => void;
+  onProjectsClick: () => void;
+  onSkillsClick: () => void;
+  onConnectClick: () => void;
+}
+
+export function HomeTop({ onAboutClick, onProjectsClick, onSkillsClick, onConnectClick }: props) {
   const buttonData = [
     {
       label: 'About',
-      onClick: () => console.log('About clicked'),
+      onClick: onAboutClick,
     },
     {
       label: 'Projects',
-      onClick: () => console.log('btn 2 clicked'),
+      onClick: onProjectsClick,
     },
     {
       label: 'Skills',
-      onClick: () => console.log('Btn 3 clicked'),
+      onClick: onSkillsClick,
     },
     {
       label: 'Let\'s Connect',
-      onClick: () => console.log('Btn 3 clicked'),
+      onClick: onConnectClick,
     },
   ];
 
@@ -36,7 +42,9 @@ export function HomeTop() {
           </h2>
           <div className={styles['button-container']}>
             {buttonData.map((buttonData, index) => (
-              <ButtonNav key={index} label={buttonData.label} onClick={buttonData.onClick} />
+              <button key={index} className={styles.nav} onClick={buttonData.onClick}>
+                {buttonData.label}
+              </button>
             ))}
           </div>
         </div>

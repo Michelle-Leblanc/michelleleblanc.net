@@ -1,0 +1,116 @@
+@import '../variables';
+
+.page {
+  &-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: radial-gradient(circle at 79% 17%, rgba($purple, 0.6), rgba($background, 1));
+    overflow: hidden;
+  }
+}
+
+.name {
+  font-weight: 600;
+  opacity: 1;
+  -webkit-text-stroke-width: 0;
+  color: $white;
+  text-align: center;
+  margin-bottom: 0;
+}
+h2.titles {
+  margin-top: 10px;
+  line-height: 1.1;
+  color: $light-gray;
+}
+p.intro {
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.button {
+  &-container {
+    transition: all 0.2s ease;
+    &.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 498; // just below navbar which is 500
+      background: linear-gradient(135deg, rgba($black,.85) -55%, rgba($purple,.85) 150%);
+      width: 100%;
+      height: 57px;
+    }
+  }
+  &-wrapper {
+    display: flex;
+    gap: 10px;
+    &.sticky {
+      position: fixed;
+      top: 10px;
+      z-index: 499; // just below navbar which is 500
+      width: 100%;
+    }
+  }
+}
+
+button.nav {
+  background-color: rgba($black,.2);
+  border: 1px solid $red;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 17px;
+  font-weight: 400;
+  color: $red;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  &:hover {
+    background-color: darken($purple, 35%);
+    color: $orange;
+    border-color: $orange;
+  }
+}
+
+
+
+@keyframes lineUp {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: -50%;
+  }
+}
+@keyframes lineDown {
+  0% {
+    bottom: 0%
+  }
+  100% {
+    bottom: -49.9%
+  }
+}
+$line: (
+  border-top: 1px solid $purple,
+  border-bottom: 1px solid $purple,
+  position: absolute,
+  width: 100vw,
+  height: 50%,
+  background-color: $background,
+);
+.line {
+  &-top {
+    @each $property, $value in $line {
+      #{$property}: $value;
+    }
+    animation: 2s lineUp;
+    top: -50%;
+  }
+  &-bottom {
+    @each $property, $value in $line {
+      #{$property}: $value;
+    }
+    animation: 2s lineDown;
+    bottom: -49.9%
+  }
+}

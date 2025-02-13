@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat, Pacifico } from "next/font/google";
+import { REM } from "next/font/google";
 import './globals.scss';
 
-const bodyFont = Montserrat({
+const bodyFont = REM({
   subsets: ["latin"],
   variable: '--font-body',
   weight: ['200', '400', '600'],
-});
-
-const headerFont = Pacifico({
-  subsets: ["latin"],
-  variable: '--font-header',
-  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bodyFont.variable} ${headerFont.variable}`}>
+      <body className={bodyFont.variable}>
         {children}
       </body>
     </html>

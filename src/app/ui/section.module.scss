@@ -1,0 +1,19 @@
+@import '../variables';
+
+.page {
+  &-section {
+    border-top: 1px solid rgba($orange, 0.2);
+    background: $background;
+    min-height: 350px;
+    padding: 0 25px;
+  }
+  &-width {
+    max-width: 1024px;
+    margin: auto;
+  }
+}
+
+h2.section-title {
+  color: $light-gray;
+  margin-top: 65px;
+}

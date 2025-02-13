@@ -27,28 +27,28 @@ export function HomeTop({ onSectionClick }: props) {
   ] as const;
   const buttonContainerRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
-  const originalTop = useRef<number | null>(null);
+  const originalPlace = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (buttonContainerRef.current) {
         const containerRect = buttonContainerRef.current.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = document.documentElement.scrollTop;
 
-        if (originalTop.current === null) {
-          originalTop.current = containerRect.top;
+        if (originalPlace.current === null) {
+          originalPlace.current = containerRect.top;
         }
 
-        const shouldStick = scrollTop > originalTop.current;
+        const shouldStick = scrollTop > originalPlace.current;
 
-        if (shouldStick !== isSticky) { // Only update state if it's changing!
+        if (shouldStick !== isSticky) {
           setIsSticky(shouldStick);
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -67,7 +67,8 @@ export function HomeTop({ onSectionClick }: props) {
             Web Development Director /<br />
             Senior Frontend Engineer
           </h2>
-          <div className={`${styles['button-container']} ${isSticky ? styles['sticky'] : ''}`} ref={buttonContainerRef}>
+          <div className={`${styles['button-container']} ${isSticky ? styles['sticky'] : ''}`} ref={buttonContainerRef} />
+          <div className={`${styles['button-wrapper']} ${isSticky ? styles['sticky'] : ''}`}>
             {buttonData.map((buttonData, index) => (
               <button key={index} className={styles.nav} onClick={() => onSectionClick(buttonData.id)}>
                 {buttonData.label}

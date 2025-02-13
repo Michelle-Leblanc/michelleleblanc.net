@@ -29,14 +29,33 @@ p.intro {
   line-height: 1.3;
 }
 
-.button-container {
-  display: flex;
-  gap: 10px;
-  transition: all 0.3s ease;
+.button {
+  &-container {
+    transition: all 0.2s ease;
+    &.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 498; // just below navbar which is 500
+      background: linear-gradient(135deg, rgba($black,.85) -55%, rgba($purple,.85) 150%);
+      width: 100%;
+      height: 57px;
+    }
+  }
+  &-wrapper {
+    display: flex;
+    gap: 10px;
+    &.sticky {
+      position: fixed;
+      top: 10px;
+      z-index: 499; // just below navbar which is 500
+      width: 100%;
+    }
+  }
 }
 
 button.nav {
-  background-color: transparent;
+  background-color: rgba($black,.2);
   border: 1px solid $red;
   border-radius: 6px;
   padding: 8px 16px;
@@ -53,16 +72,7 @@ button.nav {
   }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 499; // just below navbar which is 500
-  padding: 10px 0;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba($black,.85) -55%, rgba($purple,.85) 150%);
-  width: 100%;
-}
+
 
 @keyframes lineUp {
   0% {
